@@ -2,9 +2,13 @@ const express = require("express");
 const dotenv = require("dotenv");
 const logs = require("./data/logs");
 const cors = require("cors");
+const connectDB = require("./config/db");
 
 const PORT = process.env.PORT || 3001;
+
 const app = express();
+dotenv.config();
+connectDB();
 
 const corsOptions = {
   origin: "*",
