@@ -10,7 +10,7 @@ const App = () => (
     <Header />
     <main>
       <Route path="/" component={LandingPage} exact />
-      <Route path="/mylogs" component={() => <MyLogs />} />
+      <Route path="/logs/mylogs" component={() => <MyLogs />} />
     </main>
     <Footer />
   </BrowserRouter>
