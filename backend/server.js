@@ -3,12 +3,14 @@ const dotenv = require("dotenv");
 const logs = require("./data/logs");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const userRoutes = require("./routes/userRoutes");
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 dotenv.config();
 connectDB();
+app.use(express.json());
 
 const corsOptions = {
   origin: "*",
@@ -23,6 +25,8 @@ const corsOptions = {
 app.get("/logs/mylogs", (req, res) => {
   res.json(logs);
 });
+
+app.use("/users", userRoutes);
 
 app.use(cors(corsOptions));
 app.listen(3001, console.log(`server started on PORT ${PORT}`));
