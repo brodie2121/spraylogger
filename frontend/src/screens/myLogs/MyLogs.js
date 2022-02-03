@@ -1,20 +1,24 @@
 import MainScreen from "../../components/MainScreen";
 import { Link } from "react-router-dom";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
-import logs from "../../data/logs";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const MyLogs = () => {
+  const [logs, setLogs] = useState([]);
+
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
     }
   };
 
   const fetchLogs = async () => {
-    const data = await axios.get("/logs/mylogs");
-    console.log(data);
+    const { data } = await axios.get("/logs/mylogs");
+
+    setLogs(data);
   };
+  console.log(logs);
+
   useEffect(() => {
     fetchLogs();
   }, []);
@@ -27,7 +31,7 @@ const MyLogs = () => {
         </Button>
       </Link>
       {logs.map((log) => (
-        <Accordion>
+        <Accordion key={log._id}>
           <Card style={{ margin: 10 }}>
             <Card.Header style={{ display: "flex" }}>
               <span
