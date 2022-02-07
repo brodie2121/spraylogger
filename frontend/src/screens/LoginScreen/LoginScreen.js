@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import { Col, Row, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -6,38 +5,27 @@ import MainScreen from "../../components/MainScreen";
 import "./LoginScreen.css";
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../actions/userActions";
 
-const LoginScreen = () => {
+function LoginScreen({ history }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState("");
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
+  const dispatch = useDispatch();
 
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-      setLoading(true);
-      const { data } = await axios.post(
-        "/users/login",
-        {
-          email,
-          password,
-        },
-        config
-      );
-      console.log(data);
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      setLoading(false);
-    } catch (error) {
-      setError(error.response.data.message);
-      setLoading(false);
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/mylogs");
     }
+  }, [history, userInfo]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(login(email, password));
   };
 
   return (
@@ -78,6 +66,6 @@ const LoginScreen = () => {
       </div>
     </MainScreen>
   );
-};
+}
 
 export default LoginScreen;
