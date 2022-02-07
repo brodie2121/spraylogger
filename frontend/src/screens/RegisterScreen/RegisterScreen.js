@@ -1,56 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Form, Button, Row, Col } from "react-bootstrap";
-//import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
 import MainScreen from "../../components/MainScreen";
 import "./RegisterScreen.css";
+import { register } from "../../actions/userActions";
 
-const RegisterScreen = () => {
+function RegisterScreen({ history }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const [course, setCourse] = useState("");
   const [message, setMessage] = useState(null);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
 
-  const submitHandler = async (e) => {
+  const dispatch = useDispatch();
+
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userRegister;
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/mylogs");
+    }
+  }, [history, userInfo]);
+
+  const submitHandler = (e) => {
     e.preventDefault();
 
     if (password !== confirmpassword) {
-      setMessage("Passwords Do Not Match");
-    } else {
-      setMessage(null);
-      try {
-        const config = {
-          headers: {
-            "Content-type": "application/json",
-          },
-        };
-        setLoading(true);
-        const { data } = await axios.post(
-          "/users",
-          {
-            name,
-            email,
-            password,
-            course,
-          },
-          config
-        );
-
-        console.log(data);
-        localStorage.setItem("userInfo", JSON.stringify(data));
-        setLoading(false);
-      } catch (error) {
-        setError(error.response.data.message);
-        setLoading(false);
-      }
-    }
+      setMessage("Passwords do not match");
+    } else dispatch(register(name, email, password, course));
   };
 
   return (
@@ -122,6 +105,6 @@ const RegisterScreen = () => {
       </div>
     </MainScreen>
   );
-};
+}
 
 export default RegisterScreen;

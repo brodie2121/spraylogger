@@ -23,6 +23,7 @@ const Header = () => {
     dispatch(logout());
     history.push("/");
   };
+
   return (
     <Navbar bg="primary" expand="lg" varient="darl">
       <Container>
