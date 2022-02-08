@@ -1,6 +1,7 @@
 const Log = require("../models/logModel");
 const asyncHandler = require("express-async-handler");
 const res = require("express/lib/response");
+const { notfound } = require("../middleware/errorMiddleware");
 
 const getLogs = asyncHandler(async (req, res) => {
   const logs = await Log.find({ user: req.user._id });
@@ -48,4 +49,29 @@ const getLogById = asyncHandler(async (req, res) => {
   }
 });
 
+const updateLog = asyncHandler(async (req, res) => {
+  const { date_applied, operator, location, holes_treated, chemicals, notes } =
+    req.body;
+
+  const log = await Log.findById(req.params.id);
+
+  if (log.user.toString() !== req.user._id.toString()) {
+    res.status(401);
+    throw new Error("You cannot perform this action");
+  }
+  if (log) {
+    log.date_applied = date_applied;
+    log.operator = operator;
+    log.location = location;
+    log.holes_treated = holes_treated;
+    log.chemicals = chemicals;
+    log.notes = notes;
+
+    const updatedLog = await log.save();
+    res.json(updatedLog);
+  } else {
+    res.status(404);
+    throw new Error("Log not found");
+  }
+});
 module.exports = { getLogs, createLog, getLogById, updateLog };
