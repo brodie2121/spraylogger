@@ -4,6 +4,7 @@ const logs = require("./data/logs");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
+const logRoutes = require("./routes/logRoutes");
 const { notfound, errorHandler } = require("./middleware/errorMiddleware");
 
 const PORT = process.env.PORT || 3001;
@@ -28,6 +29,7 @@ app.get("/logs/mylogs", (req, res) => {
 });
 
 app.use("/users", userRoutes);
+app.use("/logs", logRoutes);
 
 app.use(notfound);
 app.use(errorHandler);
