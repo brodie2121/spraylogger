@@ -74,4 +74,21 @@ const updateLog = asyncHandler(async (req, res) => {
     throw new Error("Log not found");
   }
 });
-module.exports = { getLogs, createLog, getLogById, updateLog };
+
+const deleteLog = asyncHandler(async (req, res) => {
+  const log = await Log.findById(req.params.id);
+
+  if (log.user.toString() !== req.user._id.toString()) {
+    res.status(401);
+    throw new Error("You cannot perform this action");
+  }
+
+  if (log) {
+    await log.remove();
+    res.json({ message: "Log Removed" });
+  } else {
+    res.status(404);
+    throw new Error("Log not found");
+  }
+});
+module.exports = { getLogs, createLog, getLogById, updateLog, deleteLog };
