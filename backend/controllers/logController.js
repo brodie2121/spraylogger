@@ -1,5 +1,6 @@
 const Log = require("../models/logModel");
 const asyncHandler = require("express-async-handler");
+const res = require("express/lib/response");
 
 const getLogs = asyncHandler(async (req, res) => {
   const logs = await Log.find({ user: req.user._id });
@@ -37,4 +38,14 @@ const createLog = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { getLogs, createLog };
+const getLogById = asyncHandler(async (req, res) => {
+  const log = await Log.findById(req.params.id);
+
+  if (log) {
+    res.json(log);
+  } else {
+    res.status(400).json({ message: "Log not found" });
+  }
+});
+
+module.exports = { getLogs, createLog, getLogById, updateLog };
