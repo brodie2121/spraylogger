@@ -1,36 +1,47 @@
 import MainScreen from "../../components/MainScreen";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { listLogs } from "../../actions/logsActions";
+import Loading from "../../components/Loading";
+import Error from "../../components/Error";
 
 const MyLogs = () => {
-  const [logs, setLogs] = useState([]);
+  const dispatch = useDispatch();
+
+  const logList = useSelector((state) => state.logList);
+  const { loading, logs, error } = logList;
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
     }
   };
 
-  const fetchLogs = async () => {
-    const { data } = await axios.get("/logs/mylogs");
-
-    setLogs(data);
-  };
   console.log(logs);
 
+  const history = useHistory();
+
   useEffect(() => {
-    fetchLogs();
-  }, []);
+    dispatch(listLogs());
+    if (!userInfo) {
+      history.push("/");
+    }
+  }, [dispatch]);
 
   return (
-    <MainScreen title="Welcome Back">
+    <MainScreen title={`Welcome Back ${userInfo.name}`}>
       <Link to="createlog">
         <Button style={{ marginLeft: 10, marginBottom: 6 }} size="lg">
           Create new Log
         </Button>
       </Link>
-      {logs.map((log) => (
+      {error && <Error variant="danger">{error}</Error>}
+      {loading && <Loading />}
+      {logs?.map((log) => (
         <Accordion key={log._id}>
           <Card style={{ margin: 10 }}>
             <Card.Header style={{ display: "flex" }}>
@@ -45,7 +56,7 @@ const MyLogs = () => {
                 }}
               >
                 <Accordion.Toggle as={Card.Text} variant="link" eventKey="0">
-                  {log.dateApplied}
+                  {log.date_applied}
                 </Accordion.Toggle>
               </span>
 
@@ -63,12 +74,19 @@ const MyLogs = () => {
             <Accordion.Collapse eventKey="0">
               <Card.Body>
                 <h4>
-                  <Badge variant="success">Area - {log.area}</Badge>
+                  <Badge variant="success">Location - {log.location}</Badge>
                 </h4>
                 <blockquote className="blockquote mb-0">
-                  <p>{log.Opperator}</p>
+                  <p>{log.operator}</p>
+                  <p>{log.holes_treated}</p>
+                  <p>{log.chemicals}</p>
+                  <p>{log.notes}</p>
+                  <p>{log.operator}</p>
                   <footer className="blockquote-footer">
-                    Created On - date
+                    Created On{" "}
+                    <cite title="Source Title">
+                      {log.createdAt.substring(0, 10)}
+                    </cite>
                   </footer>
                 </blockquote>
               </Card.Body>
