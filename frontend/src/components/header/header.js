@@ -43,7 +43,7 @@ const Header = () => {
           </Nav>
           <Nav>
             <Nav.Link>
-              <Link to="logs/mylogs">My Logs</Link>
+              <Link to="logs">My Logs</Link>
             </Nav.Link>
             <NavDropdown title="Settings" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">My profile</NavDropdown.Item>

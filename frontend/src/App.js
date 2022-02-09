@@ -14,7 +14,7 @@ const App = () => (
       <Route path="/" component={LandingPage} exact />
       <Route path="/login" component={LoginScreen} exact />
       <Route path="/register" component={RegisterScreen} exact />
-      <Route path="/logs/mylogs" component={() => <MyLogs />} />
+      <Route path="/logs" component={() => <MyLogs />} />
     </main>
     <Footer />
   </BrowserRouter>
