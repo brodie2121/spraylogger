@@ -4,7 +4,7 @@ import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { createLogAction } from "../../actions/logsActions";
 import Loading from "../../components/Loading";
-import ErrorMessage from "../../components/ErrorMessage";
+import Error from "../../components/Error";
 import ReactMarkdown from "react-markdown";
 
 function CreateLog({ history }) {
@@ -65,7 +65,7 @@ function CreateLog({ history }) {
         <Card.Header>Create a new Log</Card.Header>
         <Card.Body>
           <Form onSubmit={submitHandler}>
-            {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+            {error && <Error variant="danger">{error}</Error>}
             <Form.Group controlId="title">
               <Form.Label>Date Applied</Form.Label>
               <Form.Control
