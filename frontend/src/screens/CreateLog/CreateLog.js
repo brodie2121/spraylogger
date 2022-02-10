@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { createLogAction } from "../../actions/logsActions";
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
-import ReactMarkdown from "react-markdown";
 
 function CreateLog({ history }) {
   const [date_applied, setDate_applied] = useState("");
@@ -86,15 +85,6 @@ function CreateLog({ history }) {
                 onChange={(e) => setLocation(e.target.value)}
               />
             </Form.Group>
-            {location && (
-              <Card>
-                <Card.Header>Log Preview</Card.Header>
-                <Card.Body>
-                  <ReactMarkdown>{location}</ReactMarkdown>
-                </Card.Body>
-              </Card>
-            )}
-
             <Form.Group controlId="content">
               <Form.Label>Operator</Form.Label>
               <Form.Control
