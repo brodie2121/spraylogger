@@ -7,6 +7,7 @@ import MyLogs from "./screens/myLogs/MyLogs";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 import CreateLog from "./screens/CreateLog/CreateLog";
+import SingleLog from "./screens/SingleLog/SingleLog";
 const App = () => (
   <BrowserRouter>
     <Header />
@@ -16,6 +17,7 @@ const App = () => (
       <Route path="/register" component={RegisterScreen} />
       <Route path="/logs" component={() => <MyLogs />} />
       <Route path="/createlog" component={CreateLog} />
+      <Route path="/logs/:id" component={SingleLog} />
     </main>
     <Footer />
   </BrowserRouter>

@@ -144,7 +144,14 @@ export const updateLogAction =
 
       const { data } = await axios.put(
         `/logs/${id}`,
-        { date_applied, operator, location, holes_treated, chemicals, notes },
+        {
+          date_applied,
+          operator,
+          location,
+          holes_treated,
+          chemicals,
+          notes,
+        },
         config
       );
 
