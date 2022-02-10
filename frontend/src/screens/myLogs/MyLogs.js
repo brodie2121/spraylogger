@@ -81,7 +81,6 @@ const MyLogs = () => {
                   <p>{log.holes_treated}</p>
                   <p>{log.chemicals}</p>
                   <p>{log.notes}</p>
-                  <p>{log.operator}</p>
                   <footer className="blockquote-footer">
                     Created On{" "}
                     <cite title="Source Title">

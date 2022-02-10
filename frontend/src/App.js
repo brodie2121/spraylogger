@@ -6,15 +6,16 @@ import LandingPage from "./screens/LandingPage/landingPage";
 import MyLogs from "./screens/myLogs/MyLogs";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
-
+import CreateLog from "./screens/CreateLog/CreateLog";
 const App = () => (
   <BrowserRouter>
     <Header />
     <main>
       <Route path="/" component={LandingPage} exact />
-      <Route path="/login" component={LoginScreen} exact />
-      <Route path="/register" component={RegisterScreen} exact />
+      <Route path="/login" component={LoginScreen} />
+      <Route path="/register" component={RegisterScreen} />
       <Route path="/logs" component={() => <MyLogs />} />
+      <Route path="/createlog" component={CreateLog} />
     </main>
     <Footer />
   </BrowserRouter>
