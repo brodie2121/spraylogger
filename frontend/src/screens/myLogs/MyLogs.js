@@ -16,6 +16,9 @@ const MyLogs = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const logCreate = useSelector((state) => state.logCreate);
+  const { success: successCreate } = logCreate;
+
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
     }
@@ -30,7 +33,7 @@ const MyLogs = () => {
     if (!userInfo) {
       history.push("/");
     }
-  }, [dispatch]);
+  }, [dispatch, successCreate, history, userInfo]);
 
   return (
     <MainScreen title={`Welcome Back ${userInfo.name}`}>
@@ -41,7 +44,7 @@ const MyLogs = () => {
       </Link>
       {error && <Error variant="danger">{error}</Error>}
       {loading && <Loading />}
-      {logs?.map((log) => (
+      {logs?.reverse().map((log) => (
         <Accordion key={log._id}>
           <Card style={{ margin: 10 }}>
             <Card.Header style={{ display: "flex" }}>

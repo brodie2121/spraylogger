@@ -70,7 +70,7 @@ function CreateLog({ history }) {
               <Form.Control
                 type="title"
                 value={date_applied}
-                placeholder="Enter the title"
+                placeholder="Enter the Spraying Date"
                 onChange={(e) => setDate_applied(e.target.value)}
               />
             </Form.Group>
@@ -78,10 +78,8 @@ function CreateLog({ history }) {
             <Form.Group controlId="content">
               <Form.Label>Location</Form.Label>
               <Form.Control
-                as="textarea"
                 value={location}
                 placeholder="Enter the Location"
-                rows={4}
                 onChange={(e) => setLocation(e.target.value)}
               />
             </Form.Group>
