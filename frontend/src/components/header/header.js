@@ -33,13 +33,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="m-auto">
-            <Form inline>
-              <FormControl
-                type="text"
-                placeholder="Search"
-                className="mr-sm-2"
-              />
-            </Form>
+            <Form inline></Form>
           </Nav>
           <Nav>
             <Nav.Link>

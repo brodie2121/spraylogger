@@ -21,6 +21,7 @@ const MyLogs = ({ history }) => {
 
   const logUpdate = useSelector((state) => state.logUpdate);
   const { success: successUpdate } = logUpdate;
+
   //DeleteLog is working now
   const logDelete = useSelector((state) => state.logDelete);
   const {
