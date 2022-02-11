@@ -21,6 +21,7 @@ function SingleLog({ match, history }) {
   const logUpdate = useSelector((state) => state.logUpdate);
   const { loading, error } = logUpdate;
 
+  //DeleteLog is working now
   const logDelete = useSelector((state) => state.logDelete);
   const { loading: loadingDelete, error: errorDelete } = logDelete;
 
