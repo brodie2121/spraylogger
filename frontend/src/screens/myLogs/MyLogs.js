@@ -1,13 +1,13 @@
 import MainScreen from "../../components/MainScreen";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listLogs } from "../../actions/logsActions";
+import { deleteLogAction, listLogs } from "../../actions/logsActions";
 import Loading from "../../components/Loading";
-import Error from "../../components/Error";
+import ErrorMessage from "../../components/Error";
 
-const MyLogs = () => {
+const MyLogs = ({ history }) => {
   const dispatch = useDispatch();
 
   const logList = useSelector((state) => state.logList);
@@ -19,21 +19,37 @@ const MyLogs = () => {
   const logCreate = useSelector((state) => state.logCreate);
   const { success: successCreate } = logCreate;
 
-  const deleteHandler = (id) => {
-    if (window.confirm("Are you sure?")) {
-    }
-  };
+  const logUpdate = useSelector((state) => state.logUpdate);
+  const { success: successUpdate } = logUpdate;
+
+  const logDelete = useSelector((state) => state.logDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = logDelete;
 
   console.log(logs);
-
-  const history = useHistory();
 
   useEffect(() => {
     dispatch(listLogs());
     if (!userInfo) {
       history.push("/");
     }
-  }, [dispatch, successCreate, history, userInfo]);
+  }, [
+    dispatch,
+    successCreate,
+    history,
+    userInfo,
+    successUpdate,
+    successDelete,
+  ]);
+
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure?")) {
+      dispatch(deleteLogAction(id));
+    }
+  };
 
   return (
     <MainScreen title={`Welcome Back ${userInfo.name}`}>
@@ -42,8 +58,12 @@ const MyLogs = () => {
           Create new Log
         </Button>
       </Link>
-      {error && <Error variant="danger">{error}</Error>}
+      {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+      {errorDelete && (
+        <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>
+      )}
       {loading && <Loading />}
+      {loadingDelete && <Loading />}
       {logs?.reverse().map((log) => (
         <Accordion key={log._id}>
           <Card style={{ margin: 10 }}>
@@ -64,7 +84,7 @@ const MyLogs = () => {
               </span>
 
               <div>
-                <Button href={`/log/${log._id}`}>Edit</Button>
+                <Button href={`/logs/${log._id}`}>Edit</Button>
                 <Button
                   variant="danger"
                   className="mx-2"

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
 import "./LoginScreen.css";
 import Loading from "../../components/Loading";
-import Error from "../../components/Error";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/userActions";
+import ErrorMessage from "../../components/Error";
 
 function LoginScreen({ history }) {
   const [email, setEmail] = useState("");
@@ -31,7 +31,7 @@ function LoginScreen({ history }) {
   return (
     <MainScreen title="LOGIN">
       <div className="loginContainer">
-        {error && <Error variant="danger">{error}</Error>}
+        {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {loading && <Loading />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="formBasicEmail">

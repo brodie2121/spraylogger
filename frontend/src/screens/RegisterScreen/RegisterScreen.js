@@ -4,7 +4,7 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
-import Error from "../../components/Error";
+import ErrorMessage from "../../components/Error";
 import MainScreen from "../../components/MainScreen";
 import "./RegisterScreen.css";
 import { register } from "../../actions/userActions";
@@ -39,8 +39,8 @@ function RegisterScreen({ history }) {
   return (
     <MainScreen title="REGISTER">
       <div className="loginContainer">
-        {error && <Error variant="danger">{error}</Error>}
-        {message && <Error variant="danger">{message}</Error>}
+        {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+        {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
         {loading && <Loading />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="name">
