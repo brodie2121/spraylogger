@@ -17,7 +17,7 @@ const App = () => (
       <Route path="/register" component={RegisterScreen} />
       <Route path="/logs" component={() => <MyLogs />} />
       <Route path="/createlog" component={CreateLog} />
-      <Route path="/logs/:id" component={SingleLog} />
+      <Route path="/log/:id" component={SingleLog} />
     </main>
     <Footer />
   </BrowserRouter>

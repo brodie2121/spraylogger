@@ -84,7 +84,7 @@ const MyLogs = ({ history }) => {
               </span>
 
               <div>
-                <Button href={`/logs/${log._id}`}>Edit</Button>
+                <Button href={`/log/${log._id}`}>Edit</Button>
                 <Button
                   variant="danger"
                   className="mx-2"
