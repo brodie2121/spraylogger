@@ -15,7 +15,7 @@ const reducer = combineReducers({
   logList: logListReducer,
   logCreate: logCreateReducer,
   logUpdate: logUpdateReducer,
-  deleteLog: logDeleteReducer,
+  logDelete: logDeleteReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
