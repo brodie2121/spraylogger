@@ -1,16 +1,18 @@
 import { Container, Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./landingPage.css";
-//import { useEffect } from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
-const LandingPage = () => {
-  //useEffect(() => {
-  //const userInfo = localStorage.getItem("userInfo");
+const LandingPage = ({ history }) => {
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
-  //if (userInfo) {
-  //history.push("mylogs");
-  //}
-  //}, [history]);
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/mynotes");
+    }
+  }, [history, userInfo]);
 
   return (
     <div className="main">
@@ -22,16 +24,16 @@ const LandingPage = () => {
               <p className="subtitle">Logging made easy</p>
             </div>
             <div className="buttonContainer">
-              <a href="/login">
+              <Link to="/login">
                 <Button size="lg" className="landingbutton">
                   Login
                 </Button>
-              </a>
-              <a href="/register">
+              </Link>
+              <Link to="/register">
                 <Button size="lg" className="landingbutton">
                   Register
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </Row>
