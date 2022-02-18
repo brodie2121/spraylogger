@@ -44,7 +44,7 @@ const Header = () => {
               <>
                 <Nav.Link href="/logs">My Logs</Nav.Link>
                 <NavDropdown
-                  title={`${userInfo.name}`}
+                  title={`${userInfo?.name}`}
                   id="collasible-nav-dropdown"
                 >
                   <NavDropdown.Item href="/profile">
