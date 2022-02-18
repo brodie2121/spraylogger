@@ -5,7 +5,7 @@ import "./ProfileScreen.css";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../../actions/userActions";
 import Loading from "../../components/Loading";
-import ErrorMessage from "../../components/ErrorMessage";
+import ErrorMessage from "../../components/Error";
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState("");
@@ -13,7 +13,6 @@ const ProfileScreen = ({ location, history }) => {
   const [course, setCourse] = useState();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [picMessage, setPicMessage] = useState();
 
   const dispatch = useDispatch();
 
@@ -97,9 +96,6 @@ const ProfileScreen = ({ location, history }) => {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 ></Form.Control>
               </Form.Group>{" "}
-              {picMessage && (
-                <ErrorMessage variant="danger">{picMessage}</ErrorMessage>
-              )}
               <Button type="submit" varient="primary">
                 Update
               </Button>
