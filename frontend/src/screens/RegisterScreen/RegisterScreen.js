@@ -24,7 +24,7 @@ function RegisterScreen({ history }) {
 
   useEffect(() => {
     if (userInfo) {
-      history.push("/mylogs");
+      history.push("/logs");
     }
   }, [history, userInfo]);
 
