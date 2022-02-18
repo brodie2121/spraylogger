@@ -24,6 +24,8 @@
 }
 
 .landingbutton {
+  background-color: rgb(55, 110, 9) !important;
+  border-color: rgb(55, 110, 9) !important;
   width: 200px;
   height: 55px;
 }

@@ -6,6 +6,7 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
+import "./header.css";
 import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,7 +28,7 @@ const Header = () => {
   useEffect(() => {}, [userInfo]);
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
+    <Navbar collapseOnSelect expand="lg" className="color-nav" variant="dark">
       <Container>
         <Navbar.Brand href="/">Spraylogger</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

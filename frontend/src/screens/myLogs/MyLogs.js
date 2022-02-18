@@ -1,4 +1,5 @@
 import MainScreen from "../../components/MainScreen";
+import "./MyLogs.css";
 import { Link } from "react-router-dom";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { useEffect } from "react";
@@ -55,7 +56,11 @@ const MyLogs = ({ history }) => {
   return (
     <MainScreen title={`Welcome Back ${userInfo.name}`}>
       <Link to="createlog">
-        <Button style={{ marginLeft: 10, marginBottom: 6 }} size="lg">
+        <Button
+          style={{ marginLeft: 10, marginBottom: 6 }}
+          className="button"
+          size="lg"
+        >
           Create new Log
         </Button>
       </Link>

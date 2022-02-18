@@ -9,6 +9,7 @@ import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 import CreateLog from "./screens/CreateLog/CreateLog";
 import SingleLog from "./screens/SingleLog/SingleLog";
 import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
+
 const App = () => (
   <BrowserRouter>
     <Header />
