@@ -33,13 +33,7 @@ const Header = () => {
         <Navbar.Brand href="/">Spraylogger</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="m-auto">
-            {userInfo && (
-              <Form inline>
-                <FormControl />
-              </Form>
-            )}
-          </Nav>
+          <Nav className="m-auto"></Nav>
           <Nav>
             {userInfo ? (
               <>
