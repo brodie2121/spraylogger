@@ -1,7 +1,7 @@
 import MainScreen from "../../components/MainScreen";
 import "./MyLogs.css";
 import { Link } from "react-router-dom";
-import { Accordion, Badge, Button, Card } from "react-bootstrap";
+import { Accordion, Badge, Button, Card, Row, Col } from "react-bootstrap";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteLogAction, listLogs } from "../../actions/logsActions";
@@ -106,10 +106,22 @@ const MyLogs = ({ history }) => {
                   <Badge variant="success">Location - {log.location}</Badge>
                 </h4>
                 <blockquote className="blockquote mb-0">
-                  <p>{log.operator}</p>
-                  <p>{log.holes_treated}</p>
-                  <p>{log.chemicals}</p>
-                  <p>{log.notes}</p>
+                  <Row>
+                    <Col>
+                      <p>Operator: {log.operator}</p>
+                    </Col>
+                    <Col>
+                      <p>Holes Treated: {log.holes_treated}</p>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <p>Chemincals used: {log.chemicals}</p>
+                    </Col>
+                    <Col>
+                      <p>Notes: {log.notes}</p>
+                    </Col>
+                  </Row>
                   <footer className="blockquote-footer">
                     Created On{" "}
                     <cite title="Source Title">
