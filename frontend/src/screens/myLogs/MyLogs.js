@@ -102,33 +102,29 @@ const MyLogs = ({ history }) => {
             </Card.Header>
             <Accordion.Collapse eventKey="0">
               <Card.Body>
-                <h4>
-                  <Badge variant="success">Location - {log.location}</Badge>
-                </h4>
-                <blockquote className="blockquote mb-0">
-                  <Row>
-                    <Col>
-                      <p>Operator: {log.operator}</p>
-                    </Col>
-                    <Col>
-                      <p>Holes Treated: {log.holes_treated}</p>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <p>Chemincals used: {log.chemicals}</p>
-                    </Col>
-                    <Col>
-                      <p>Notes: {log.notes}</p>
-                    </Col>
-                  </Row>
-                  <footer className="blockquote-footer">
-                    Created On{" "}
-                    <cite title="Source Title">
-                      {log.createdAt.substring(0, 10)}
-                    </cite>
-                  </footer>
-                </blockquote>
+                <Card className="MyCard" style={{ padding: 10 }}>
+                  <h4>
+                    <Badge variant="success">Location - {log.location}</Badge>
+                  </h4>
+                  <blockquote className="blockquote mb-0">
+                    <Row>
+                      <Col>
+                        <p>Operator: {log.operator}</p>
+                      </Col>
+                      <Col>
+                        <p>Holes Treated: {log.holes_treated}</p>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <p>Chemincals used: {log.chemicals}</p>
+                      </Col>
+                      <Col>
+                        <p>Notes: {log.notes}</p>
+                      </Col>
+                    </Row>
+                  </blockquote>
+                </Card>
               </Card.Body>
             </Accordion.Collapse>
           </Card>
