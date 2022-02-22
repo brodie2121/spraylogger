@@ -74,15 +74,25 @@ function CreateLog({ history }) {
                 onChange={(e) => setDate_applied(e.target.value)}
               />
             </Form.Group>
-
-            <Form.Group controlId="content">
-              <Form.Label>Location</Form.Label>
+            <Form.Group controlId="formBasicSelect">
+              <Form.Label>Select Location Type</Form.Label>
               <Form.Control
+                as="select"
                 value={location}
-                placeholder="Enter the Location"
-                onChange={(e) => setLocation(e.target.value)}
-              />
+                onChange={(e) => {
+                  console.log("e.target.value", e.target.value);
+                  setLocation(e.target.value);
+                }}
+              >
+                <option value="Fairways">Fairways</option>
+                <option value="Greens">Greens</option>
+                <option value="Native">Native</option>
+                <option value="Rough">Rough</option>
+                <option value="Tees">Tees</option>
+                <option value="Other">Other</option>
+              </Form.Control>
             </Form.Group>
+
             <Form.Group controlId="content">
               <Form.Label>Operator</Form.Label>
               <Form.Control
