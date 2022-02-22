@@ -150,7 +150,7 @@ function SingleLog({ match, history }) {
               />
             </Form.Group>
             {loading && <Loading size={50} />}
-            <Button variant="primary" type="submit">
+            <Button className="button" variant="primary" type="submit">
               Update Log
             </Button>
             <Button
