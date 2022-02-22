@@ -118,7 +118,7 @@ const MyLogs = ({ history }) => {
                   </Row>
                   <Row>
                     <Col>
-                      <p>Chemincals used: {log.chemicals}</p>
+                      <p>Chemicals used: {log.chemicals}</p>
                     </Col>
                     <Col>
                       <p>Notes: {log.notes}</p>
