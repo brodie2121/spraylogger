@@ -92,7 +92,6 @@ function CreateLog({ history }) {
                 <option value="Other">Other</option>
               </Form.Control>
             </Form.Group>
-
             <Form.Group controlId="content">
               <Form.Label>Operator</Form.Label>
               <Form.Control
