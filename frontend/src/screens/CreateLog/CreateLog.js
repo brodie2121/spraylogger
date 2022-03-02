@@ -111,7 +111,7 @@ function CreateLog({ history }) {
               />
             </Form.Group>
             <Form.Group controlId="content">
-              <Form.Label>Chemicals</Form.Label>
+              <Form.Label>Chemicals Used</Form.Label>
               <Form.Control
                 type="content"
                 value={chemicals}
