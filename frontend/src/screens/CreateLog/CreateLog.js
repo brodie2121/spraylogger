@@ -137,10 +137,6 @@ function CreateLog({ history }) {
             </Button>
           </Form>
         </Card.Body>
-
-        <Card.Footer className="text-muted">
-          Creating on - {new Date().toLocaleDateString()}
-        </Card.Footer>
       </Card>
     </MainScreen>
   );
