@@ -1,6 +1,7 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-
+//Date picker not working at the moment
+//Need to figure out why
 class DatepickerComponent extends React.Component {
   render() {
     return (
