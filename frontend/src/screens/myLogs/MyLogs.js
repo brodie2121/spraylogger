@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteLogAction, listLogs } from "../../actions/logsActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/Error";
-
+//need to verify user login
 const MyLogs = ({ history }) => {
   const dispatch = useDispatch();
 
