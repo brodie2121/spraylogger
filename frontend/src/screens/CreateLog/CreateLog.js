@@ -118,9 +118,7 @@ function CreateLog({ history }) {
                 placeholder="Enter the Chemicals used"
                 onChange={(e) => setChemicals(e.target.value)}
               />
-              <Button variant="secondary" onClick={resetHandler}>
-                Add More Chemicals
-              </Button>
+              {/*<Button variant="secondary" onClick={}> Add More Chemicals</Button>*/}
             </Form.Group>
             <Form.Group controlId="content">
               <Form.Label>Notes</Form.Label>
