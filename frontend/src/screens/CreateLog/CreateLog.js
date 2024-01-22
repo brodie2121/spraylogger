@@ -47,7 +47,7 @@ function CreateLog({ history }) {
       !location ||
       !operator ||
       !holes_treated ||
-      chemicals.some((chemicals) => !chemicals) ||
+      !chemicals ||
       !notes
     )
       return;
@@ -57,10 +57,6 @@ function CreateLog({ history }) {
   };
 
   useEffect(() => {}, []);
-
-  const handleAddMoreChemicals = () => {
-    setChemicals([...chemicals, ""]); // Add a new empty string for a new chemical
-  };
 
   return (
     <MainScreen title="Create a Log">
@@ -116,20 +112,13 @@ function CreateLog({ history }) {
             </Form.Group>
             <Form.Group controlId="content">
               <Form.Label>Chemicals Used</Form.Label>
-              {chemicals.map((chemical, index) => (
-                <Form.Control
-                  key={index}
-                  type="content"
-                  value={chemical}
-                  placeholder={`Enter Chemical #${index + 1}`}
-                  onChange={(e) => {
-                    const newChemicals = [...chemicals];
-                    newChemicals[index] = e.target.value;
-                    setChemicals(newChemicals);
-                  }}
-                />
-              ))}
-              <Button variant="secondary" onClick={handleAddMoreChemicals}>
+              <Form.Control
+                type="content"
+                value={chemicals}
+                placeholder="Enter the Chemicals used"
+                onChange={(e) => setChemicals(e.target.value)}
+              />
+              <Button variant="secondary" onClick={resetHandler}>
                 Add More Chemicals
               </Button>
             </Form.Group>
