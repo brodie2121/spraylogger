@@ -122,12 +122,12 @@ function CreateLog({ history }) {
               <Form.Control
                 type="content"
                 value={chemicals}
-                placeholder="Enter the Chemicals used"
+                placeholder="Enter additional chemical used"
               />
               <Form.Control
                 type="content"
                 value={chemicals}
-                placeholder="Enter the Chemicals used"
+                placeholder="Enter additional chemical used"
               />
             </Form.Group>
             <Form.Group controlId="content">
