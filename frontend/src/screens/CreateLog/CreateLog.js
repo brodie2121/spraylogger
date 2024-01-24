@@ -119,6 +119,16 @@ function CreateLog({ history }) {
                 onChange={(e) => setChemicals(e.target.value)}
               />
               {/*<Button variant="secondary" onClick={}> Add More Chemicals</Button>*/}
+              <Form.Control
+                type="content"
+                value={chemicals}
+                placeholder="Enter the Chemicals used"
+              />
+              <Form.Control
+                type="content"
+                value={chemicals}
+                placeholder="Enter the Chemicals used"
+              />
             </Form.Group>
             <Form.Group controlId="content">
               <Form.Label>Notes</Form.Label>
